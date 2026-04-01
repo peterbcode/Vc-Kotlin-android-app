@@ -1,7 +1,7 @@
 ﻿# Android/Gradle
 .gradle/
 build/
-local.properties
+# local.properties
 .idea/
 .gradle-user/
 *.iml
