@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand_navy">#161616</color>
+    <color name="brand_navy_dark">#000000</color>
+    <color name="brand_teal">#F47C20</color>
+    <color name="brand_teal_dark">#C85E08</color>
+    <color name="brand_sand">#FFD6B0</color>
+    <color name="text_primary">#FFF5EC</color>
+    <color name="text_secondary">#C9B39F</color>
+    <color name="surface">#141414</color>
+    <color name="surface_muted">#221914</color>
+    <color name="surface_border">#7A4218</color>
+    <color name="page_background">#090909</color>
+    <color name="hero_text">#FFFFFFFF</color>
+    <color name="hero_text_muted">#FFE1C6</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="whatsapp_green">#25D366</color>
+    <color name="splash_bg">#161616</color>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/nav_isp"
+        android:icon="@drawable/ic_isp"
+        android:title="ISP" />
+
+    <item
+        android:id="@+id/nav_repairs"
+        android:icon="@drawable/ic_repairs"
+        android:title="Repairs" />
+
+    <item
+        android:id="@+id/nav_network"
+        android:icon="@drawable/ic_network"
+        android:title="Network" />
+
+    <item
+        android:id="@+id/nav_contact"
+        android:icon="@drawable/ic_contact"
+        android:title="Contact" />
+
+</menu>

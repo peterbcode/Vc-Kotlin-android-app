@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.VCClientAndroidApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/brand_navy</item>
+        <item name="colorPrimaryVariant">@color/brand_navy_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/brand_teal</item>
+        <item name="colorSecondaryVariant">@color/brand_teal_dark</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:colorBackground">@color/page_background</item>
+        <item name="android:statusBarColor">@color/brand_navy_dark</item>
+        <item name="materialButtonStyle">@style/Widget.VCClientAndroidApp.Button</item>
+
+        <!-- Fix for dark text in input fields on dark backgrounds -->
+        <item name="editTextStyle">@style/Widget.VCClientAndroidApp.EditText</item>
+        <item name="checkboxStyle">@style/Widget.VCClientAndroidApp.CheckBox</item>
+        <item name="radioButtonStyle">@style/Widget.VCClientAndroidApp.RadioButton</item>
+    </style>
+</resources>

@@ -1,0 +1,16 @@
+﻿# Android/Gradle
+.gradle/
+build/
+local.properties
+.idea/
+.gradle-user/
+*.iml
+
+# Generated artifacts
+*.apk
+*.aab
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db

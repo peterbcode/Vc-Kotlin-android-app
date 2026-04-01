@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "865748837698",
+    "project_id": "valley-computers-fdbff",
+    "storage_bucket": "valley-computers-fdbff.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865748837698:android:8416c0ac755ef66f0394db",
+        "android_client_info": {
+          "package_name": "com.valleycomputers.client"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKLvNEiAWM914Gf_la9VPdgAp93qxsGPE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
