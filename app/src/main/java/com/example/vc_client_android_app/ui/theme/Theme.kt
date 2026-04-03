@@ -36,7 +36,7 @@ fun VCClientAndroidAppTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = DeepBlack.toArgb()
+            // Removed deprecated statusBarColor. Use enableEdgeToEdge() in Activity for modern Android 15+ support.
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false
         }
     }

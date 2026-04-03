@@ -32,14 +32,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Keep support native until the final send." />
+                android:text="@string/contact_title" />
 
             <TextView
                 style="@style/TextAppearance.VCClientAndroidApp.HeroBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Users can call immediately or send a fully typed support request from inside the app." />
+                android:text="@string/contact_body" />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
@@ -58,7 +58,7 @@
                     style="@style/TextAppearance.VCClientAndroidApp.Overline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Direct contact" />
+                    android:text="Direct support" />
 
                 <TextView
                     android:id="@+id/tvPhone"
@@ -73,7 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Call us" />
+                    android:text="@string/contact_btn_call" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnWhatsApp"
@@ -81,7 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Open WhatsApp" />
+                    android:text="@string/contact_btn_whatsapp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -101,45 +101,51 @@
                     style="@style/TextAppearance.VCClientAndroidApp.Title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Support message" />
+                    android:text="Message us" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VCClientAndroidApp.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etContactName"
+                        style="@style/Widget.VCClientAndroidApp.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Your name"
+                        android:hint="@string/contact_msg_hint_name"
                         android:inputType="textPersonName" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VCClientAndroidApp.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etContactSubject"
+                        style="@style/Widget.VCClientAndroidApp.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Subject"
+                        android:hint="@string/contact_msg_hint_subject"
                         android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VCClientAndroidApp.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etContactMessage"
+                        style="@style/Widget.VCClientAndroidApp.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="top|start"
-                        android:hint="How can we help?"
+                        android:hint="@string/contact_msg_hint_body"
                         android:inputType="textMultiLine"
                         android:minLines="4" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -150,7 +156,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Send by email" />
+                    android:text="@string/contact_btn_email" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSendContactWhatsApp"
@@ -158,7 +164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Send on WhatsApp" />
+                    android:text="@string/contact_btn_whatsapp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -178,7 +184,7 @@
                     style="@style/TextAppearance.VCClientAndroidApp.Overline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Address" />
+                    android:text="Our office" />
 
                 <TextView
                     android:id="@+id/tvAddress"

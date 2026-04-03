@@ -4,13 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.vc_client_android_app.MainActivity
 import com.example.vc_client_android_app.R
 import com.example.vc_client_android_app.data.AppPreferences
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.card.MaterialCardView
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -19,113 +21,144 @@ import java.util.Locale
 class NetworkFragment : Fragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.fragment_network, container, false)
+        return inflater.inflate(R.layout.fragment_network, container, false)
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Bind views
         val etName: TextInputEditText = view.findViewById(R.id.etNetworkName)
         val etPhone: TextInputEditText = view.findViewById(R.id.etNetworkPhone)
         val etSite: TextInputEditText = view.findViewById(R.id.etNetworkSite)
         val etScope: TextInputEditText = view.findViewById(R.id.etNetworkScope)
         val etNotes: TextInputEditText = view.findViewById(R.id.etNetworkNotes)
-        val btnWhatsApp: MaterialButton = view.findViewById(R.id.btnSendNetworkWhatsApp)
-        val btnEmail: MaterialButton = view.findViewById(R.id.btnSendNetworkEmail)
-        val cardTrigger: MaterialCardView = view.findViewById(R.id.cardEasterEggTrigger)
+        val rgSiteType: RadioGroup = view.findViewById(R.id.rgSiteType)
+        val rgPower: RadioGroup = view.findViewById(R.id.rgPowerSetup)
+        val cbWifi: CheckBox = view.findViewById(R.id.cbInfraWifi)
+        val cbCable: CheckBox = view.findViewById(R.id.cbInfraCable)
+        val cbFiber: CheckBox = view.findViewById(R.id.cbInfraFiber)
+        val cbCctv: CheckBox = view.findViewById(R.id.cbInfraCctv)
+        val swEmergency: SwitchMaterial = view.findViewById(R.id.switchEmergency)
 
-        // Show the trigger if eligible
-        if (AppPreferences.isEasterEggEligible(requireContext())) {
-            cardTrigger.visibility = View.VISIBLE
-            
-            // Add a subtle flicker effect to make it "less inconspicuous"
-            cardTrigger.alpha = 0.8f
-            cardTrigger.animate().alpha(1.0f).setDuration(500).setStartDelay(1000).withEndAction {
-                cardTrigger.animate().alpha(0.6f).setDuration(500).setStartDelay(2000).start()
-            }.start()
+        // Pre-fill from saved profile
+        val profile = AppPreferences.getProfile(requireContext())
+        etName.setText(profile.name)
+        etPhone.setText(profile.phone)
+        etSite.setText(profile.address)
+
+        // Collect infra checkboxes into a list for cleaner passing
+        val infraCheckBoxes = listOf(cbWifi, cbCable, cbFiber, cbCctv)
+
+        // Helper to build and validate request, running a side-effect on success
+        fun sendRequest(onValidRequest: (String) -> Unit) {
+            val request = buildRequest(
+                name = etName.textValue(),
+                phone = etPhone.textValue(),
+                site = etSite.textValue(),
+                scope = etScope.textValue(),
+                notes = etNotes.textValue(),
+                siteType = getRadioText(rgSiteType),
+                power = getRadioText(rgPower),
+                infra = getSelectedInfra(infraCheckBoxes),
+                isEmergency = swEmergency.isChecked
+            ) ?: return
+
+            saveRequest(
+                name = etName.textValue(),
+                scope = etScope.textValue(),
+                site = etSite.textValue()
+            )
+            onValidRequest(request)
         }
 
-        // Easter Egg Trigger: Tap the header 5 times
-        val layoutHeader: View = view.findViewById(R.id.layoutNetworkHeader)
-        var tapCount = 0
-        layoutHeader.setOnClickListener {
-            if (AppPreferences.isEasterEggEligible(requireContext())) {
-                tapCount++
-                if (tapCount >= 3) { // Reduced to 3 taps for easier discovery
-                    (activity as? MainActivity)?.loadFragment(NetworkGameFragment())
-                    tapCount = 0
-                }
+        view.findViewById<MaterialButton>(R.id.btnSendNetworkWhatsApp).setOnClickListener {
+            sendRequest { request ->
+                (activity as? MainActivity)?.openWhatsAppMessage(request)
             }
         }
 
-        val profile = AppPreferences.getProfile(requireContext())
-        if (profile.name.isNotBlank()) etName.setText(profile.name)
-        if (profile.phone.isNotBlank()) etPhone.setText(profile.phone)
-        if (profile.address.isNotBlank()) etSite.setText(profile.address)
-
-        btnWhatsApp.setOnClickListener {
-            val request = buildRequest(
-                name = etName.textValue(),
-                phone = etPhone.textValue(),
-                site = etSite.textValue(),
-                scope = etScope.textValue(),
-                notes = etNotes.textValue()
-            ) ?: return@setOnClickListener
-
-            AppPreferences.saveRecentRequest(
-                requireContext(),
-                "Network request",
-                "${etName.textValue()} requested ${etScope.textValue()} for ${etSite.textValue()}",
-                timestamp()
-            )
-            (activity as? MainActivity)?.openWhatsAppMessage(request)
+        view.findViewById<MaterialButton>(R.id.btnSendNetworkEmail).setOnClickListener {
+            sendRequest { request ->
+                val subject = "Network Engineering Brief: ${etSite.textValue()}"
+                (activity as? MainActivity)?.composeEmail(subject, request)
+            }
         }
-
-        btnEmail.setOnClickListener {
-            val request = buildRequest(
-                name = etName.textValue(),
-                phone = etPhone.textValue(),
-                site = etSite.textValue(),
-                scope = etScope.textValue(),
-                notes = etNotes.textValue()
-            ) ?: return@setOnClickListener
-
-            AppPreferences.saveRecentRequest(
-                requireContext(),
-                "Network request",
-                "${etName.textValue()} requested ${etScope.textValue()} for ${etSite.textValue()}",
-                timestamp()
-            )
-            (activity as? MainActivity)?.composeEmail("Network Request", request)
-        }
-
-        return view
     }
+
+    // --- Request building ---
 
     private fun buildRequest(
         name: String,
         phone: String,
         site: String,
         scope: String,
-        notes: String
+        notes: String,
+        siteType: String,
+        power: String,
+        infra: String,
+        isEmergency: Boolean
     ): String? {
-        if (name.isBlank() || phone.isBlank() || site.isBlank() || scope.isBlank()) {
-            Toast.makeText(requireContext(), "Please fill in the main network request details", Toast.LENGTH_SHORT).show()
+        if (name.isBlank() || phone.isBlank() || site.isBlank()) {
+            val ctx = context
+            if (ctx != null) {
+                Toast.makeText(ctx, R.string.error_fill_contact_info, Toast.LENGTH_SHORT).show()
+            }
             return null
         }
 
-        val extraNotes = if (notes.isBlank()) "None" else notes
+        val priority = if (isEmergency) "EMERGENCY / CRITICAL" else "Standard"
+        val scopeText = scope.ifBlank { "Site assessment and survey required" }
+        val notesText = notes.ifBlank { "None" }
 
         return """
-            Hello Valley Computers,
-
-            I would like to request network assistance.
-
-            Contact person: $name
+            ENGINEERING BRIEF: NETWORK JOB
+            ------------------------------
+            Priority: $priority
+            Environment: $siteType
+            Power System: $power
+            Infrastructure: $infra
+            
+            Contact: $name
             Phone: $phone
             Site: $site
-            Required work: $scope
-            Notes: $extraNotes
+            
+            Scope of Work:
+            $scopeText
+            
+            Detailed Technical Notes:
+            $notesText
+            
+            Generated via Valley Computers Engineering Tool
         """.trimIndent()
+    }
+
+    // --- Persistence ---
+
+    private fun saveRequest(name: String, scope: String, site: String) {
+        AppPreferences.saveRecentRequest(
+            requireContext(),
+            "Network Engineering",
+            "$name briefed: $scope at $site",
+            timestamp()
+        )
+    }
+
+    // --- Helpers ---
+
+    private fun getRadioText(group: RadioGroup): String {
+        val id = group.checkedRadioButtonId
+        if (id == -1) return "Not specified"
+        return group.findViewById<android.widget.RadioButton>(id)?.text?.toString() ?: "Unknown"
+    }
+
+    private fun getSelectedInfra(checkBoxes: List<CheckBox>): String {
+        val selected = checkBoxes.filter { it.isChecked }.map { it.text.toString() }
+        return selected.ifEmpty { listOf("General Assessment") }.joinToString(", ")
     }
 
     private fun TextInputEditText.textValue(): String = text?.toString()?.trim().orEmpty()

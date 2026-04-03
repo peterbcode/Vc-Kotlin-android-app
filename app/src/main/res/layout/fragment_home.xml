@@ -29,7 +29,7 @@
                 android:paddingTop="6dp"
                 android:paddingEnd="12dp"
                 android:paddingBottom="6dp"
-                android:text="Riebeek Valley local service"
+                android:text="@string/home_hero_title"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
@@ -38,13 +38,14 @@
                 style="@style/TextAppearance.VCClientAndroidApp.HeroTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp" />
+                android:layout_marginTop="18dp"
+                android:text="@string/home_hero_subtitle" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="From fibre sign-ups to home networking and expert repairs, everything is arranged around quick access and local support."
+                android:text="@string/home_hero_body"
                 android:textColor="@color/hero_text_muted"
                 android:textSize="16sp" />
 
@@ -55,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:backgroundTint="@color/brand_teal"
-                android:text="Get connected"
+                android:text="@string/home_btn_connect"
                 android:textColor="@color/black" />
 
             <com.google.android.material.button.MaterialButton
@@ -64,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Check coverage"
+                android:text="@string/home_btn_coverage"
                 android:textColor="@color/brand_sand"
                 app:strokeColor="@color/brand_teal" />
         </LinearLayout>
@@ -80,7 +81,7 @@
             style="@style/TextAppearance.VCClientAndroidApp.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Everything your website highlights, organised for mobile." />
+            android:text="@string/home_services_title" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardIsp"
@@ -102,14 +103,14 @@
                     style="@style/TextAppearance.VCClientAndroidApp.Title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ISP Services" />
+                    android:text="@string/service_isp_title" />
 
                 <TextView
                     style="@style/TextAppearance.VCClientAndroidApp.Body"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Fibre and wireless access with quick paths to connection requests and coverage checks." />
+                    android:text="@string/service_isp_desc" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -133,14 +134,14 @@
                     style="@style/TextAppearance.VCClientAndroidApp.Title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Repairs and Support" />
+                    android:text="@string/service_repairs_title" />
 
                 <TextView
                     style="@style/TextAppearance.VCClientAndroidApp.Body"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Book help fast for machines that need attention, upgrades, or troubleshooting." />
+                    android:text="@string/service_repairs_desc" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -164,14 +165,14 @@
                     style="@style/TextAppearance.VCClientAndroidApp.Title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Network Solutions" />
+                    android:text="@string/service_network_title" />
 
                 <TextView
                     style="@style/TextAppearance.VCClientAndroidApp.Body"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Structured networking and on-site support presented as a clean mobile service hub." />
+                    android:text="@string/service_network_desc" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -195,14 +196,14 @@
                     style="@style/TextAppearance.VCClientAndroidApp.Title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Account Dashboard" />
+                    android:text="@string/service_account_title" />
 
                 <TextView
                     style="@style/TextAppearance.VCClientAndroidApp.Body"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Save your details, view recent requests and speed up future bookings." />
+                    android:text="@string/service_account_desc" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>

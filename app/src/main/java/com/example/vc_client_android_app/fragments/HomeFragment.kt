@@ -71,10 +71,33 @@ class HomeFragment : Fragment() {
             .setMessage("Enter your town or area to check if Valley Computers provides service in your region.")
             .setView(dialogView)
             .setPositiveButton("Check") { dialog, _ ->
-                val areaInput = etArea.text?.toString()?.trim()?.lowercase() ?: ""
-                val swartlandAreas = listOf("riebeek kasteel", "riebeek west", "malmesbury", "chatsworth", "swartland", "koringberg", "moorreesburg", "darling")
-                
-                val isCovered = swartlandAreas.any { areaInput.contains(it) || it.contains(areaInput) && areaInput.isNotEmpty() }
+                val rawInput = etArea.text?.toString()?.trim().orEmpty()
+                if (rawInput.isBlank()) {
+                    MaterialAlertDialogBuilder(requireContext())
+                        .setTitle("Area required")
+                        .setMessage("Please enter your town or area before checking coverage.")
+                        .setPositiveButton("OK", null)
+                        .show()
+                    return@setPositiveButton
+                }
+
+                val areaInput = rawInput.lowercase()
+                val swartlandAreas = listOf(
+                    "riebeek kasteel",
+                    "riebeek-kasteel",
+                    "riebeek west",
+                    "riebeek-west",
+                    "malmesbury",
+                    "chatsworth",
+                    "swartland",
+                    "koringberg",
+                    "moorreesburg",
+                    "darling"
+                )
+
+                val isCovered = swartlandAreas.any { area ->
+                    areaInput.contains(area) || area.contains(areaInput)
+                }
 
                 if (isCovered) {
                     MaterialAlertDialogBuilder(requireContext())
@@ -88,7 +111,7 @@ class HomeFragment : Fragment() {
                 } else {
                     MaterialAlertDialogBuilder(requireContext())
                         .setTitle("Not Covered Yet")
-                        .setMessage("Unfortunately, we don't currently provide service in \"$areaInput\". We are primarily focused on the Riebeek Valley and Swartland regions.")
+                        .setMessage("Unfortunately, we don't currently provide service in \"$rawInput\". We are primarily focused on the Riebeek Valley and Swartland regions.")
                         .setPositiveButton("OK", null)
                         .show()
                 }

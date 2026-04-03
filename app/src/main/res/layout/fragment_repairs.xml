@@ -25,28 +25,28 @@
                 style="@style/TextAppearance.VCClientAndroidApp.Overline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Support" />
+                android:text="Support &amp; Repairs" />
 
             <TextView
                 style="@style/TextAppearance.VCClientAndroidApp.HeroTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Book a repair with a native intake form." />
+                android:text="Book Your Repair with a Technical Brief." />
 
             <TextView
                 style="@style/TextAppearance.VCClientAndroidApp.HeroBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Let customers describe the device and problem first, then send the request in one tap." />
+                android:text="Provide us with the device details and a technical summary of the issue to expedite the repair process." />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.VCClientAndroidApp.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -58,28 +58,32 @@
                     style="@style/TextAppearance.VCClientAndroidApp.Title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Repair booking" />
+                    android:text="Technical Booking" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VCClientAndroidApp.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etRepairName"
+                        style="@style/Widget.VCClientAndroidApp.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Your name"
+                        android:hint="Contact name"
                         android:inputType="textPersonName" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VCClientAndroidApp.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etRepairPhone"
+                        style="@style/Widget.VCClientAndroidApp.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Phone number"
@@ -87,39 +91,121 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VCClientAndroidApp.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etRepairDevice"
+                        style="@style/Widget.VCClientAndroidApp.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Device type and brand"
+                        android:hint="Device (e.g. Laptop, PC, Printer)"
                         android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    style="@style/TextAppearance.VCClientAndroidApp.Overline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Device Category" />
+
+                <RadioGroup
+                    android:id="@+id/rgDeviceCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                    <RadioButton
+                        android:id="@+id/rbCatComputers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Desktop / Laptop" />
+
+                    <RadioButton
+                        android:id="@+id/rbCatMobile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mobile / Tablet" />
+
+                    <RadioButton
+                        android:id="@+id/rbCatNetwork"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Networking Equipment" />
+
+                    <RadioButton
+                        android:id="@+id/rbCatPrinter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Printer / Peripheral" />
+                </RadioGroup>
+
+                <TextView
+                    style="@style/TextAppearance.VCClientAndroidApp.Overline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Initial Assessment" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/cbIssuePower"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Power / Battery Issue" />
+
+                    <CheckBox
+                        android:id="@+id/cbIssueDisplay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Screen / Display Issue" />
+
+                    <CheckBox
+                        android:id="@+id/cbIssueSoftware"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Software / OS Failure" />
+
+                    <CheckBox
+                        android:id="@+id/cbIssuePhysical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Physical / Liquid Damage" />
+                </LinearLayout>
+
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VCClientAndroidApp.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etRepairIssue"
+                        style="@style/Widget.VCClientAndroidApp.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="top|start"
-                        android:hint="What is the issue?"
+                        android:hint="Detailed fault description"
                         android:inputType="textMultiLine"
                         android:minLines="3" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <CheckBox
-                    android:id="@+id/cbUrgentRepair"
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchUrgent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="This repair is urgent" />
+                    android:text="Priority: Technical Emergency"
+                    android:textColor="@color/brand_teal" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSendRepairWhatsApp"
@@ -127,7 +213,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Send on WhatsApp" />
+                    android:text="Send to Technical Dept." />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSendRepairEmail"
@@ -135,7 +221,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Send by email" />
+                    android:text="Send via Email" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>

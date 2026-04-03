@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/networkScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToPadding="false"
@@ -22,62 +23,32 @@
             android:orientation="vertical"
             android:padding="24dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                style="@style/TextAppearance.VCClientAndroidApp.Overline"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <TextView
-                    style="@style/TextAppearance.VCClientAndroidApp.Overline"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Infrastructure" />
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardEasterEggTrigger"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    app:cardBackgroundColor="#44FF0000"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="#AAFF0000"
-                    app:strokeWidth="1dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="4dp"
-                        android:text="UNSTABLE"
-                        android:textColor="#FFFF0000"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
+                android:text="Professional Services" />
 
             <TextView
                 style="@style/TextAppearance.VCClientAndroidApp.HeroTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Plan a network job natively in the app." />
+                android:text="Enterprise-Grade Network Planning" />
 
             <TextView
                 style="@style/TextAppearance.VCClientAndroidApp.HeroBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Capture the site, the problem, and the type of work required before sending the brief to Valley Computers." />
+                android:text="Whether it's a new Wi-Fi mesh or complex cabling, provide us with the site details to receive a specialized technician brief." />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.VCClientAndroidApp.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -89,15 +60,17 @@
                     style="@style/TextAppearance.VCClientAndroidApp.Title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Network request" />
+                    android:text="Job Briefing" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VCClientAndroidApp.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etNetworkName"
+                        style="@style/Widget.VCClientAndroidApp.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Contact person"
@@ -105,12 +78,14 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VCClientAndroidApp.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etNetworkPhone"
+                        style="@style/Widget.VCClientAndroidApp.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Phone number"
@@ -118,42 +93,163 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VCClientAndroidApp.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etNetworkSite"
+                        style="@style/Widget.VCClientAndroidApp.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Site address or business name"
                         android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    style="@style/TextAppearance.VCClientAndroidApp.Overline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Environment Type" />
+
+                <RadioGroup
+                    android:id="@+id/rgSiteType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rbTypeRes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Residential" />
+
+                    <RadioButton
+                        android:id="@+id/rbTypeBus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Business" />
+
+                    <RadioButton
+                        android:id="@+id/rbTypeInd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Industrial" />
+                </RadioGroup>
+
+                <TextView
+                    style="@style/TextAppearance.VCClientAndroidApp.Overline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Power Infrastructure" />
+
+                <RadioGroup
+                    android:id="@+id/rgPowerSetup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                    <RadioButton
+                        android:id="@+id/rbPowerGrid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Grid Only (No backup)" />
+
+                    <RadioButton
+                        android:id="@+id/rbPowerSolar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Solar / Inverter System" />
+
+                    <RadioButton
+                        android:id="@+id/rbPowerUps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="UPS Protected Circuit" />
+                </RadioGroup>
+
+                <TextView
+                    style="@style/TextAppearance.VCClientAndroidApp.Overline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Requested Infrastructure" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/cbInfraWifi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Wi-Fi Mesh / Access Points" />
+
+                    <CheckBox
+                        android:id="@+id/cbInfraCable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cat6 Structured Cabling" />
+
+                    <CheckBox
+                        android:id="@+id/cbInfraFiber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fiber Splicing / Extension" />
+
+                    <CheckBox
+                        android:id="@+id/cbInfraCctv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IP Camera Deployment" />
+                </LinearLayout>
+
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VCClientAndroidApp.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etNetworkScope"
+                        style="@style/Widget.VCClientAndroidApp.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Required work: Wi-Fi, cabling, router setup, maintenance"
+                        android:hint="Scope of work (e.g. 12 data points)"
                         android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchEmergency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Priority: Critical System Down"
+                    android:textColor="@color/brand_teal" />
+
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VCClientAndroidApp.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etNetworkNotes"
+                        style="@style/Widget.VCClientAndroidApp.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="top|start"
-                        android:hint="Extra details"
+                        android:hint="Site specific details / Equipment lists"
                         android:inputType="textMultiLine"
                         android:minLines="3" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -164,7 +260,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Send on WhatsApp" />
+                    android:text="Submit to Engineering" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSendNetworkEmail"
@@ -172,7 +268,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Send by email" />
+                    android:text="Send via Email" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>

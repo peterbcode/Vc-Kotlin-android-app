@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_background"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextAppearance.VCClientAndroidApp.HeroTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wireless Fibre Application"
+            android:textColor="@color/brand_teal" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.VCClientAndroidApp.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etFormName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Client Name &amp; Surname"
+                        android:textColor="@color/text_primary" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etFormAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Address"
+                        android:textColor="@color/text_primary" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etFormTown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Town"
+                        android:textColor="@color/text_primary" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etFormContact"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Contact No"
+                        android:inputType="phone"
+                        android:textColor="@color/text_primary" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etFormEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Email Address"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/text_primary" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etFormInstallDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Installation Date"
+                        android:textColor="@color/text_primary" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            style="@style/TextAppearance.VCClientAndroidApp.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Monthly WiFi Rental Options" />
+
+        <RadioGroup
+            android:id="@+id/rgWifiOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+            <RadioButton android:id="@+id/rb2mbps" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="2Mbps - R350" />
+            <RadioButton android:id="@+id/rb4mbps" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="4Mbps - R550" />
+            <RadioButton android:id="@+id/rb6mbps" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="6Mbps - R650" />
+            <RadioButton android:id="@+id/rb8mbps" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="8Mbps - R850" />
+            <RadioButton android:id="@+id/rb10mbps" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="10Mbps - R1050" />
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/cbUpsRental"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Equipment UPS rental R100" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Installation Fee (R1000)"
+            style="@style/TextAppearance.VCClientAndroidApp.Title" />
+
+        <RadioGroup
+            android:id="@+id/rgInstallFee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+            <RadioButton android:id="@+id/rbInstallPaidCash" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Paid Cash" />
+            <RadioButton android:id="@+id/rbInstallPaidEft" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Paid EFT" />
+            <RadioButton android:id="@+id/rbInstallOther" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Other Arrangement" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Payment Terms"
+            style="@style/TextAppearance.VCClientAndroidApp.Title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="WiFi Payments strictly payable monthly in advance prior to 1st of the Month.\n\nBank: Capitec\nName: Mr M Brodie\nType: Savings\nAcc: 1346399970\nBranch: 470010"
+            android:textColor="@color/text_secondary" />
+
+        <RadioGroup
+            android:id="@+id/rgPaymentMethod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+            <RadioButton android:id="@+id/rbCash" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cash" />
+            <RadioButton android:id="@+id/rbEft" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="EFT" />
+            <RadioButton android:id="@+id/rbOzow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ozow (Instant EFT)" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Ref: Fullname of applicant or current invoice no."
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Cancellation requires one calendar month written notice."
+            android:textColor="@color/brand_teal"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/TextAppearance.VCClientAndroidApp.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Finger Signature" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.VCClientAndroidApp.Card"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="8dp"
+            app:cardBackgroundColor="@color/surface">
+            <ImageView
+                android:id="@+id/ivSignatureDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:alpha="0.8"
+                android:contentDescription="Tap to sign" />
+
+            <TextView
+                android:id="@+id/tvSignPlaceholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="TAP HERE TO SIGN"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:letterSpacing="0.2" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFormDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Application Agreement Date"
+                android:textColor="@color/text_primary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSubmitApplication"
+            style="@style/Widget.VCClientAndroidApp.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Submit Application" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:text="accounts@valleycomputers.co.za | support@valleycomputers.co.za"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary" />
+
+        <View android:layout_width="match_parent" android:layout_height="120dp" />
+    </LinearLayout>
+</ScrollView>

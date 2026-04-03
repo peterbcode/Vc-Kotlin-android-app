@@ -53,8 +53,17 @@
         <item name="android:textColor">@color/brand_teal</item>
     </style>
 
-    <!-- Style for EditText to fix dark text visibility -->
-    <style name="Widget.VCClientAndroidApp.EditText" parent="Widget.AppCompat.EditText">
+    <!-- Enhanced style for TextInputLayout to fix hint and label visibility -->
+    <style name="Widget.VCClientAndroidApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">@color/brand_teal</item>
+        <item name="android:textColorHint">@color/text_secondary</item>
+        <item name="boxStrokeColor">@color/brand_teal</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+    </style>
+
+    <!-- Style for EditText to fix typing text visibility (ensures it's light) -->
+    <style name="Widget.VCClientAndroidApp.EditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textColorHint">@color/text_secondary</item>
     </style>

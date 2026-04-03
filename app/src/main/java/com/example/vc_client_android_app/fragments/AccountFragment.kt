@@ -10,10 +10,12 @@ import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.vc_client_android_app.MainActivity
 import com.example.vc_client_android_app.R
 import com.example.vc_client_android_app.data.AccountProfile
 import com.example.vc_client_android_app.data.AppPreferences
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
 import kotlin.random.Random
@@ -32,6 +34,9 @@ class AccountFragment : Fragment() {
         val tvRecentType: TextView = view.findViewById(R.id.tvRecentRequestType)
         val tvRecentSummary: TextView = view.findViewById(R.id.tvRecentRequestSummary)
         val tvRecentTime: TextView = view.findViewById(R.id.tvRecentRequestTime)
+        
+        // Wireless Form Call to Action
+        val btnOpenWirelessForm: MaterialButton = view.findViewById(R.id.btnOpenWirelessForm)
         
         // Speed Test Views
         val tvSpeedResult: TextView = view.findViewById(R.id.tvSpeedResult)
@@ -91,6 +96,10 @@ class AccountFragment : Fragment() {
 
         bindDashboard()
 
+        btnOpenWirelessForm.setOnClickListener {
+            (activity as? MainActivity)?.loadFragment(WirelessFormFragment())
+        }
+
         btnStartSpeedTest.setOnClickListener {
             btnStartSpeedTest.isEnabled = false
             btnStartSpeedTest.text = "Testing..."
@@ -105,7 +114,6 @@ class AccountFragment : Fragment() {
                         count++
                         handler.postDelayed(this, 200)
                     } else {
-                        // Final result simulation
                         val finalSpeed = Random.nextInt(20, 95)
                         tvSpeedResult.text = finalSpeed.toString()
                         btnStartSpeedTest.text = "Run Speed Test"

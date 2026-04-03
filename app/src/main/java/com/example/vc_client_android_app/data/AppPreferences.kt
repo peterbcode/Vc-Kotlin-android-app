@@ -10,7 +10,8 @@ data class AccountProfile(
     val address: String = "",
     val contactPreference: String = "WhatsApp",
     val serviceInterest: String = "Fibre",
-    val notificationsEnabled: Boolean = true
+    val notificationsEnabled: Boolean = true,
+    val formCompleted: Boolean = false
 )
 
 data class RecentRequest(
@@ -28,6 +29,7 @@ object AppPreferences {
     private const val KEY_CONTACT_PREF = "contact_preference"
     private const val KEY_SERVICE_INTEREST = "service_interest"
     private const val KEY_NOTIFICATIONS = "notifications_enabled"
+    private const val KEY_FORM_COMPLETED = "form_completed"
     private const val KEY_LAST_REQUEST_TYPE = "last_request_type"
     private const val KEY_LAST_REQUEST_SUMMARY = "last_request_summary"
     private const val KEY_LAST_REQUEST_TIME = "last_request_time"
@@ -42,7 +44,8 @@ object AppPreferences {
             address = prefs.getString(KEY_ADDRESS, "").orEmpty(),
             contactPreference = prefs.getString(KEY_CONTACT_PREF, "WhatsApp").orEmpty(),
             serviceInterest = prefs.getString(KEY_SERVICE_INTEREST, "Fibre").orEmpty(),
-            notificationsEnabled = prefs.getBoolean(KEY_NOTIFICATIONS, true)
+            notificationsEnabled = prefs.getBoolean(KEY_NOTIFICATIONS, true),
+            formCompleted = prefs.getBoolean(KEY_FORM_COMPLETED, false)
         )
     }
 
@@ -56,7 +59,13 @@ object AppPreferences {
             .putString(KEY_CONTACT_PREF, profile.contactPreference)
             .putString(KEY_SERVICE_INTEREST, profile.serviceInterest)
             .putBoolean(KEY_NOTIFICATIONS, profile.notificationsEnabled)
+            .putBoolean(KEY_FORM_COMPLETED, profile.formCompleted)
             .apply()
+    }
+
+    fun setFormCompleted(context: Context, completed: Boolean) {
+        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        prefs.edit().putBoolean(KEY_FORM_COMPLETED, completed).apply()
     }
 
     fun getRecentRequest(context: Context): RecentRequest {

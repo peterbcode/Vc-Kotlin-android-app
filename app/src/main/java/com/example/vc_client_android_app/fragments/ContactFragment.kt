@@ -39,7 +39,7 @@ class ContactFragment : Fragment() {
 
         val profile = AppPreferences.getProfile(requireContext())
         if (profile.name.isNotBlank()) etName.setText(profile.name)
-        if (profile.email.isNotBlank()) etSubject.setText("Support request from ${profile.name}")
+        if (profile.name.isNotBlank()) etSubject.setText("Support request from ${profile.name}")
 
         btnCall.setOnClickListener {
             (activity as? MainActivity)?.dialPhone()

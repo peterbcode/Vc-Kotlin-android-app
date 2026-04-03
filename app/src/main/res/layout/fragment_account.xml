@@ -43,133 +43,7 @@
                 android:text="Save your details once, then move through support and service requests much faster." />
         </LinearLayout>
 
-        <!-- Speed Test Card -->
-        <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.VCClientAndroidApp.Card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            app:cardBackgroundColor="@color/surface_muted">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <TextView
-                    style="@style/TextAppearance.VCClientAndroidApp.Title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Wi-Fi Speed Test"
-                    android:textColor="@color/brand_sand" />
-
-                <TextView
-                    android:id="@+id/tvSpeedResult"
-                    style="@style/TextAppearance.VCClientAndroidApp.HeroTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="--"
-                    android:textColor="@color/brand_teal"
-                    android:textSize="48sp" />
-
-                <TextView
-                    android:id="@+id/tvSpeedUnit"
-                    style="@style/TextAppearance.VCClientAndroidApp.Overline"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Mbps" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnStartSpeedTest"
-                    style="@style/Widget.VCClientAndroidApp.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Run Speed Test"
-                    app:backgroundTint="@color/brand_teal" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.VCClientAndroidApp.Card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <TextView
-                    style="@style/TextAppearance.VCClientAndroidApp.Title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Dashboard" />
-
-                <TextView
-                    style="@style/TextAppearance.VCClientAndroidApp.Overline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Preferred service" />
-
-                <TextView
-                    android:id="@+id/tvDashboardService"
-                    style="@style/TextAppearance.VCClientAndroidApp.Body"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp" />
-
-                <TextView
-                    style="@style/TextAppearance.VCClientAndroidApp.Overline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Preferred contact" />
-
-                <TextView
-                    android:id="@+id/tvDashboardContact"
-                    style="@style/TextAppearance.VCClientAndroidApp.Body"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp" />
-
-                <TextView
-                    style="@style/TextAppearance.VCClientAndroidApp.Overline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Latest request" />
-
-                <TextView
-                    android:id="@+id/tvRecentRequestType"
-                    style="@style/TextAppearance.VCClientAndroidApp.Title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp" />
-
-                <TextView
-                    android:id="@+id/tvRecentRequestSummary"
-                    style="@style/TextAppearance.VCClientAndroidApp.Body"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp" />
-
-                <TextView
-                    android:id="@+id/tvRecentRequestTime"
-                    style="@style/TextAppearance.VCClientAndroidApp.Body"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
+        <!-- Account setup card moved to the top -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.VCClientAndroidApp.Card"
             android:layout_width="match_parent"
@@ -198,7 +72,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Full name"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="@color/text_primary" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -211,7 +86,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Email address"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/text_primary" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -224,7 +100,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Phone number"
-                        android:inputType="phone" />
+                        android:inputType="phone"
+                        android:textColor="@color/text_primary" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -237,7 +114,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Address"
-                        android:inputType="textPostalAddress" />
+                        android:inputType="textPostalAddress"
+                        android:textColor="@color/text_primary" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -321,6 +199,173 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Save account" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Wireless Application Call to Action -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardWirelessApply"
+            style="@style/Widget.VCClientAndroidApp.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            app:cardBackgroundColor="@color/surface_muted"
+            app:strokeColor="@color/brand_teal"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    style="@style/TextAppearance.VCClientAndroidApp.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Wireless Fibre Application"
+                    android:textColor="@color/brand_teal" />
+
+                <TextView
+                    style="@style/TextAppearance.VCClientAndroidApp.Body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Ready to get connected? Fill out the official application form to start your installation." />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOpenWirelessForm"
+                    style="@style/Widget.VCClientAndroidApp.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Start Application" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Speed Test Card -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.VCClientAndroidApp.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    style="@style/TextAppearance.VCClientAndroidApp.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Wi-Fi Speed Test"
+                    android:textColor="@color/brand_sand" />
+
+                <TextView
+                    android:id="@+id/tvSpeedResult"
+                    style="@style/TextAppearance.VCClientAndroidApp.HeroTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="--"
+                    android:textColor="@color/brand_teal"
+                    android:textSize="48sp" />
+
+                <TextView
+                    android:id="@+id/tvSpeedUnit"
+                    style="@style/TextAppearance.VCClientAndroidApp.Overline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Mbps" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnStartSpeedTest"
+                    style="@style/Widget.VCClientAndroidApp.Button.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Run Speed Test" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Dashboard card moved to the bottom -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.VCClientAndroidApp.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    style="@style/TextAppearance.VCClientAndroidApp.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dashboard" />
+
+                <TextView
+                    style="@style/TextAppearance.VCClientAndroidApp.Overline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Preferred service" />
+
+                <TextView
+                    android:id="@+id/tvDashboardService"
+                    style="@style/TextAppearance.VCClientAndroidApp.Body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    style="@style/TextAppearance.VCClientAndroidApp.Overline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Preferred contact" />
+
+                <TextView
+                    android:id="@+id/tvDashboardContact"
+                    style="@style/TextAppearance.VCClientAndroidApp.Body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    style="@style/TextAppearance.VCClientAndroidApp.Overline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Latest request" />
+
+                <TextView
+                    android:id="@+id/tvRecentRequestType"
+                    style="@style/TextAppearance.VCClientAndroidApp.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    android:id="@+id/tvRecentRequestSummary"
+                    style="@style/TextAppearance.VCClientAndroidApp.Body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp" />
+
+                <TextView
+                    android:id="@+id/tvRecentRequestTime"
+                    style="@style/TextAppearance.VCClientAndroidApp.Body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>

@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.vc_client_android_app.MainActivity
 import com.example.vc_client_android_app.R
 import com.example.vc_client_android_app.data.AppPreferences
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -28,13 +30,20 @@ class RepairsFragment : Fragment() {
         val etPhone: TextInputEditText = view.findViewById(R.id.etRepairPhone)
         val etDevice: TextInputEditText = view.findViewById(R.id.etRepairDevice)
         val etIssue: TextInputEditText = view.findViewById(R.id.etRepairIssue)
-        val cbUrgent: CheckBox = view.findViewById(R.id.cbUrgentRepair)
+        
+        val rgCategory: RadioGroup = view.findViewById(R.id.rgDeviceCategory)
+        val cbPower: CheckBox = view.findViewById(R.id.cbIssuePower)
+        val cbDisplay: CheckBox = view.findViewById(R.id.cbIssueDisplay)
+        val cbSoftware: CheckBox = view.findViewById(R.id.cbIssueSoftware)
+        val cbPhysical: CheckBox = view.findViewById(R.id.cbIssuePhysical)
+        val swUrgent: SwitchMaterial = view.findViewById(R.id.switchUrgent)
+
         val btnWhatsApp: MaterialButton = view.findViewById(R.id.btnSendRepairWhatsApp)
         val btnEmail: MaterialButton = view.findViewById(R.id.btnSendRepairEmail)
 
         val profile = AppPreferences.getProfile(requireContext())
-        if (profile.name.isNotBlank()) etName.setText(profile.name)
-        if (profile.phone.isNotBlank()) etPhone.setText(profile.phone)
+        etName.setText(profile.name)
+        etPhone.setText(profile.phone)
 
         btnWhatsApp.setOnClickListener {
             val request = buildRequest(
@@ -42,15 +51,12 @@ class RepairsFragment : Fragment() {
                 phone = etPhone.textValue(),
                 device = etDevice.textValue(),
                 issue = etIssue.textValue(),
-                urgent = cbUrgent.isChecked
+                category = getRadioText(rgCategory),
+                assessment = getSelectedAssessment(cbPower, cbDisplay, cbSoftware, cbPhysical),
+                isUrgent = swUrgent.isChecked
             ) ?: return@setOnClickListener
 
-            AppPreferences.saveRecentRequest(
-                requireContext(),
-                "Repair booking",
-                "${etName.textValue()} booked ${etRepairSummary(etDevice.textValue(), cbUrgent.isChecked)}",
-                timestamp()
-            )
+            saveRequest(etName.textValue(), etDevice.textValue(), swUrgent.isChecked)
             (activity as? MainActivity)?.openWhatsAppMessage(request)
         }
 
@@ -60,45 +66,63 @@ class RepairsFragment : Fragment() {
                 phone = etPhone.textValue(),
                 device = etDevice.textValue(),
                 issue = etIssue.textValue(),
-                urgent = cbUrgent.isChecked
+                category = getRadioText(rgCategory),
+                assessment = getSelectedAssessment(cbPower, cbDisplay, cbSoftware, cbPhysical),
+                isUrgent = swUrgent.isChecked
             ) ?: return@setOnClickListener
 
-            AppPreferences.saveRecentRequest(
-                requireContext(),
-                "Repair booking",
-                "${etName.textValue()} booked ${etRepairSummary(etDevice.textValue(), cbUrgent.isChecked)}",
-                timestamp()
-            )
-            (activity as? MainActivity)?.composeEmail("Repair Booking", request)
+            saveRequest(etName.textValue(), etDevice.textValue(), swUrgent.isChecked)
+            (activity as? MainActivity)?.composeEmail("Repair Booking: ${etDevice.textValue()}", request)
         }
 
         return view
     }
 
+    private fun getRadioText(group: RadioGroup): String {
+        val id = group.checkedRadioButtonId
+        if (id == -1) return "General"
+        return group.findViewById<android.widget.RadioButton>(id)?.text?.toString() ?: "General"
+    }
+
+    private fun getSelectedAssessment(vararg boxes: CheckBox): String {
+        val list = mutableListOf<String>()
+        boxes.forEach { if (it.isChecked) list.add(it.text.toString()) }
+        return if (list.isEmpty()) "Standard" else list.joinToString(", ")
+    }
+
+    private fun saveRequest(name: String, device: String, urgent: Boolean) {
+        AppPreferences.saveRecentRequest(
+            requireContext(),
+            "Repair Booking",
+            "$name booked ${if (urgent) "URGENT" else "standard"} repair for $device",
+            timestamp()
+        )
+    }
+
     private fun buildRequest(
-        name: String,
-        phone: String,
-        device: String,
-        issue: String,
-        urgent: Boolean
+        name: String, phone: String, device: String, issue: String,
+        category: String, assessment: String, isUrgent: Boolean
     ): String? {
-        if (name.isBlank() || phone.isBlank() || device.isBlank() || issue.isBlank()) {
-            Toast.makeText(requireContext(), "Please complete the repair booking form", Toast.LENGTH_SHORT).show()
+        if (name.isBlank() || phone.isBlank() || device.isBlank()) {
+            Toast.makeText(requireContext(), "Please provide device and contact details", Toast.LENGTH_SHORT).show()
             return null
         }
 
-        val urgency = if (urgent) "Urgent" else "Standard"
-
         return """
-            Hello Valley Computers,
-
-            I would like to book a repair.
-
-            Name: $name
+            TECHNICAL REPAIR BOOKING
+            ------------------------
+            Urgency: ${if (isUrgent) "CRITICAL / URGENT" else "Normal"}
+            Category: $category
+            Initial Assessment: $assessment
+            
+            Contact: $name
             Phone: $phone
             Device: $device
-            Urgency: $urgency
-            Issue: $issue
+            
+            Detailed Fault Description:
+            ${if (issue.isBlank()) "Technical evaluation required" else issue}
+            
+            Generated via Valley Computers Technical Tool
         """.trimIndent()
     }
 
@@ -106,7 +130,4 @@ class RepairsFragment : Fragment() {
 
     private fun timestamp(): String =
         SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault()).format(Date())
-
-    private fun etRepairSummary(device: String, urgent: Boolean): String =
-        if (urgent) "an urgent repair for $device" else "a repair for $device"
 }

@@ -1,6 +1,41 @@
 <resources>
     <string name="app_name">Valley Computers</string>
-    <string name="app_tagline">Fibre, wireless and IT support</string>
-    <string name="welcome_default">Powering the Riebeek Valley.</string>
-    <string name="welcome_back">Welcome back, %1$s.</string>
+    <string name="app_tagline">Fibre, Wireless and IT Support</string>
+    <string name="welcome_default">Powering the Riebeek Valley</string>
+    <string name="welcome_back">Welcome back, %1$s</string>
+
+    <!-- Home Fragment -->
+    <string name="home_hero_title">Riebeek Valley Local Service</string>
+    <string name="home_hero_subtitle">Expert support, simplified.</string>
+    <string name="home_hero_body">Get connected with local fibre, professional repairs, and on-site networking.</string>
+    <string name="home_btn_connect">Get Connected</string>
+    <string name="home_btn_coverage">Check Coverage</string>
+    <string name="home_services_title">Our Services</string>
+
+    <string name="service_isp_title">ISP Services</string>
+    <string name="service_isp_desc">Fast fibre and wireless setups with local support.</string>
+
+    <string name="service_repairs_title">Repairs &amp; Upgrades</string>
+    <string name="service_repairs_desc">Expert help for hardware, software, and upgrades.</string>
+
+    <string name="service_network_title">Network Solutions</string>
+    <string name="service_network_desc">Custom home and office networking that actually works.</string>
+
+    <string name="service_account_title">Your Dashboard</string>
+    <string name="service_account_desc">Manage your profile and track service requests.</string>
+
+    <!-- Contact Fragment -->
+    <string name="contact_title">Get in Touch</string>
+    <string name="contact_subtitle">We\'re here to help.</string>
+    <string name="contact_body">Call us for immediate assistance or send a quick message below.</string>
+    <string name="contact_btn_call">Call Support</string>
+    <string name="contact_btn_whatsapp">Chat on WhatsApp</string>
+    <string name="contact_msg_hint_name">Your Name</string>
+    <string name="contact_msg_hint_subject">Subject</string>
+    <string name="contact_msg_hint_body">How can we help?</string>
+    <string name="contact_btn_email">Email Support</string>
+
+    <!-- General / Errors -->
+    <string name="error_fill_contact_info">Please fill in name, phone and site address</string>
+    <string name="btn_rescan">Run Rescan</string>
 </resources>
